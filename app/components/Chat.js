@@ -25,7 +25,7 @@ function Chat() {
   }, [appState.isChatOpen])
 
   useEffect(() => {
-    socket.current = io("http://localhost:5000")
+    socket.current = io(process.env.BACKENDURL || "https://mybackendforreacttest.onrender.com")
     socket.current.on("chatFromServer", message => {
       setState(draft => {
         draft.chatMessages.push(message)
